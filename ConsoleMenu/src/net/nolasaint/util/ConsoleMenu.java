@@ -1,5 +1,7 @@
 package net.nolasaint.util;
 
+import java.util.Queue;
+
 /**
  * This class allows for easy and customizable console-based menus.
  *
@@ -10,6 +12,8 @@ public class ConsoleMenu {
 
     private String title;
     private ConsoleMenuItem[] menuItems;
+    private int currentIndex; // Last 
+
     /*
      * index % maxindex and leftover decides number of times print letter ?
      */
@@ -29,6 +33,113 @@ public class ConsoleMenu {
      */
     public ConsoleMenu(String title) {
         this.title = title;
+        // menuItems = new ConsoleMenuItem[10];
+
+    }
+
+    private int getFreeIndex() {
+        boolean found = false;
+        int freeIndex = 0;
+        ConsoleMenuItem[] menuItemsCopy;
+
+        for (int i = 0; i < menuItems.length && !found; i++) {
+            if (null == menuItems[i]) {
+                freeIndex = i;
+                found = true;
+
+            }
+
+        }
+
+        // No space, resize array
+        if (!found) {
+            freeIndex = menuItems.length;
+            menuItemsCopy = menuItems;
+            menuItems = new ConsoleMenuItem[menuItems.length * 2];
+
+            for (int i = 0; i < menuItemsCopy.length; i++) {
+                menuItems[i] = menuItemsCopy[i];
+
+            }
+
+        }
+
+        return freeIndex;
+
+    }
+
+    /**
+     * Returns whether the specified ConsoleMenuItem is contained in this
+     * ConsoleMenu.
+     *
+     * @param   menuItem    - the ConsoleMenuItem to be checked for
+     * @return  true if the ConsoleMenuItem exists in this ConsoleMenu
+     */
+    public boolean contains(ConsoleMenuItem menuItem) {
+        boolean contained = false;
+
+        if (null != menuItem) {
+            for (int i = 0; i < menuItems.length && !contained; i++) {
+                if (menuItems[i].equals(menuItem)) {
+                    contained = true;
+
+                }
+
+            }
+
+        }
+
+        return contained;
+
+    }
+
+    /**
+     * Attempts to add the specified ConsoleMenuItem to this ConsoleMenu.
+     *
+     * @param   menuItem    - the ConsoleMenuItem to be added
+     * @return  true if menuItem is not null
+     */
+    public boolean add(ConsoleMenuItem menuItem) {
+        boolean added = false;
+
+        if (null != menuItem) {
+            menuItems[getFreeIndex()] = menuItem;
+            added = true;
+
+        }
+
+        return added;
+
+    }
+
+    /**
+     * Attempts to remove the specified ConsoleMenuItem from this ConsoleMenu.
+     *
+     * @param   menuItem    - the ConsoleMenuItem to be removed
+     * @return  true if the ConsoleMenuItem was removed from this ConsoleMenu
+     */
+    public boolean remove(ConsoleMenuItem menuItem) {
+        boolean removed = false;
+        int index = 0;
+
+        if (null != menuItem) {
+            for (int i = 0; i < menuItems.length && !removed; i++) {
+                if (menuItems[i].equals(menuItem)) {
+                    index = i;
+                    removed = true;
+
+                }
+
+            }
+
+        }
+
+        if (removed) {
+            // TODO Shift all elements after index back by one until end of []
+
+        }
+
+        return removed;
 
     }
 
