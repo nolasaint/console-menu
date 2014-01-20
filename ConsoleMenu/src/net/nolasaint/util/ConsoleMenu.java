@@ -155,6 +155,7 @@ public class ConsoleMenu {
 
     }
 
+
     /**
      * Returns the title of this ConsoleMenu.
      *
@@ -175,15 +176,28 @@ public class ConsoleMenu {
 
     }
 
-    // debug
-    public void printDebug() {
-        System.out.println("menuItems[]:");
+    @Override
+    public String toString() {
+        String asString = title + ":\n";
 
         for (int i = 0; i < menuItems.length; i++) {
-            System.out.println("[" + i + "]" + menuItems[i]);
+            asString = asString.concat((i + 1) + ": " + menuItems[i] + "\n");
 
         }
 
+        return asString;
+
     }
+
+//    // For debugging purposes
+//    protected void printDebug() {
+//        System.out.println("menuItems[]:");
+//
+//        for (int i = 0; i < menuItems.length; i++) {
+//            System.out.println("[" + i + "]" + menuItems[i]);
+//
+//        }
+//
+//    }
 
 }
