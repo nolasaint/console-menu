@@ -4,11 +4,12 @@ package net.nolasaint.util;
  * This class allows for easy and customizable console-based menus.
  *
  * @author Evan
- * @version 1.0
+ * @version 1.1
  */
 public class ConsoleMenu {
 
     private String title;
+    private ConsoleMenuItem[] menuItems;
     /*
      * index % maxindex and leftover decides number of times print letter ?
      */
@@ -32,8 +33,9 @@ public class ConsoleMenu {
     }
 
     /**
-     * 
-     * @return
+     * Returns the title of this ConsoleMenu.
+     *
+     * @return  the title of this ConsoleMenu
      */
     public String getTitle() {
         return title;
@@ -41,8 +43,9 @@ public class ConsoleMenu {
     }
 
     /**
-     * 
-     * @param title
+     * Sets this ConsoleMenu's title.
+     *
+     * @param   title   - the title for this ConsoleMenu
      */
     public void setTitle(String title) {
         this.title = title;
