@@ -1,2 +1,4 @@
 /bin
 .metadata
+.settings
+/src/net/nolasaint/util/ConsoleMenuTest.java

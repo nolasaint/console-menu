@@ -33,7 +33,7 @@ public class ConsoleMenu {
      */
     public ConsoleMenu(String title) {
         this.title = title;
-        // menuItems = new ConsoleMenuItem[10];
+        menuItems = new ConsoleMenuItem[10];
 
     }
 
@@ -121,6 +121,7 @@ public class ConsoleMenu {
     public boolean remove(ConsoleMenuItem menuItem) {
         boolean removed = false;
         int index = 0;
+        ConsoleMenuItem[] menuItemsCopy;
 
         if (null != menuItem) {
             for (int i = 0; i < menuItems.length && !removed; i++) {
@@ -135,7 +136,18 @@ public class ConsoleMenu {
         }
 
         if (removed) {
-            // TODO Shift all elements after index back by one until end of []
+            menuItemsCopy = menuItems;
+
+            for (int i = index; i < menuItems.length; i++) {
+                if (i == menuItems.length - 1) {
+                    menuItems[i] = null;
+
+                } else {
+                    menuItems[i] = menuItemsCopy[i + 1];
+
+                }
+
+            }
 
         }
 
@@ -160,6 +172,17 @@ public class ConsoleMenu {
      */
     public void setTitle(String title) {
         this.title = title;
+
+    }
+
+    // debug
+    public void printDebug() {
+        System.out.println("menuItems[]:");
+
+        for (int i = 0; i < menuItems.length; i++) {
+            System.out.println("[" + i + "]" + menuItems[i]);
+
+        }
 
     }
 
