@@ -1,7 +1,5 @@
 package net.nolasaint.util;
 
-import java.util.Queue;
-
 /**
  * This class allows for easy and customizable console-based menus.
  *
@@ -11,8 +9,7 @@ import java.util.Queue;
 public class ConsoleMenu {
 
     private String title;
-    private ConsoleMenuItem[] menuItems;
-    private int currentIndex; // Last 
+    private ConsoleMenuItem[] menuItems; 
 
     /*
      * index % maxindex and leftover decides number of times print letter ?
