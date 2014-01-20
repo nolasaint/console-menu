@@ -11,7 +11,7 @@ public class ConsoleMenuItem {
     private final String text;
 
     /**
-     * Constructs a new ConsoleMenuItem with the specified texts.
+     * Constructs a new ConsoleMenuItem with the specified text.
      *
      * @param   text    - the text of this ConsoleMenuItem
      */
