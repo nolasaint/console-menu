@@ -64,7 +64,14 @@ public class ConsoleMenu {
     }
 
     private void parseInput(String input) {
-        // temp
+        try {
+           menuItems[Integer.parseInt(input)].performAction();
+
+        } catch (Exception ex) {
+            System.out.println("Invalid input, please make another "
+                    + "selection...");
+
+        }
 
     }
 
@@ -170,6 +177,8 @@ public class ConsoleMenu {
             parseInput(inputString);
 
         } while (!inputString.equals("0"));
+
+        input.close();
 
         // TODO 0 -> Quit
         // TODO Or, getInput: ConsoleMenuItem

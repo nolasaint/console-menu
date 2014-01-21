@@ -25,6 +25,14 @@ public class ConsoleMenuItem {
 
     }
 
+    /**
+     * Performs this ConsoleMenuItem's ConsoleMenuAction.
+     */
+    public void performAction() {
+        action.perform();
+
+    }
+
     @Override
     public int hashCode() {
         return text.hashCode() + action.hashCode();
