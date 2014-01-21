@@ -1,18 +1,18 @@
 package net.nolasaint.util;
 
 /**
- * This abstract class allows for pseudo-functional programming techniques
- * by letting the user write a custom ConsoleMenuAction class with custom
- * perform method.
+ * This interface allows for pseudo-functional programming techniques
+ * by letting the user define the perform method, which is called whenever the
+ * associated ConsoleMenuItem is selected.
  *
  * @author nolasaint
- * @version 1.0
+ * @version 1.1
  */
-public abstract class ConsoleMenuAction {
+public interface ConsoleMenuAction {
 
     /**
      * The action that should be performed by this class.
      */
-    public abstract void perform();
+    void perform();
 
 }

@@ -1,5 +1,7 @@
 package net.nolasaint.util;
 
+import java.util.Scanner;
+
 /**
  * This class allows for easy and customizable console-based menus.
  *
@@ -10,10 +12,6 @@ public class ConsoleMenu {
 
     private String title;
     private ConsoleMenuItem[] menuItems; 
-
-    /*
-     * index % maxindex and leftover decides number of times print letter ?
-     */
 
     /**
      * The generic constructor which provides the default title.
@@ -62,6 +60,11 @@ public class ConsoleMenu {
         }
 
         return freeIndex;
+
+    }
+
+    private void parseInput(String input) {
+        // temp
 
     }
 
@@ -152,6 +155,26 @@ public class ConsoleMenu {
 
     }
 
+    /**
+     * Displays the ConsoleMenu and parses input.
+     */
+    public void run() {
+        Scanner input = new Scanner(System.in);
+        String inputString;
+
+        do {
+            System.out.print(this);
+            System.out.print("Please make a selection: ");
+            inputString = input.nextLine();
+
+            parseInput(inputString);
+
+        } while (!inputString.equals("0"));
+
+        // TODO 0 -> Quit
+        // TODO Or, getInput: ConsoleMenuItem
+
+    }
 
     /**
      * Returns the title of this ConsoleMenu.
@@ -175,12 +198,14 @@ public class ConsoleMenu {
 
     @Override
     public String toString() {
-        String asString = title + ":\n";
+        String asString = title + "\n";
 
         for (int i = 0; i < menuItems.length; i++) {
             asString = asString.concat((i + 1) + ": " + menuItems[i] + "\n");
 
         }
+
+        asString = asString.concat("0: Quit\n");
 
         return asString;
 
